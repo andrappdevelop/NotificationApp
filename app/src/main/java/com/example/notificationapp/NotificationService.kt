@@ -37,18 +37,21 @@ class NotificationService : Service() {
             CHANNEL_NAME,
             NotificationManager.IMPORTANCE_DEFAULT
         )
+
         notificationManager.createNotificationChannel(notificationChannel)
 
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Title")
             .setContentText("Text")
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
             .build()
 
-        notificationManager.notify(1, builder)
+        notificationManager.notify(ID, builder)
     }
 
     companion object {
 
+        private const val ID = 101
         private const val CHANNEL_ID = "channel_id"
         private const val CHANNEL_NAME = "channel_name"
     }
